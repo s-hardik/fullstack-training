@@ -4,10 +4,10 @@ import logo from "../../assets/logo.png";
 import EmpTable from "./EmpTable";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../firebase/firebase";
-const EmployeeDetails = () => {
+
+const EmployeeDetails = ({user}) => {
   const logoutHandler = ()=>{
     logout();
-    navigate('/')
   }
   const navigate = useNavigate();
   const addEmploHandler = () => {
@@ -22,7 +22,7 @@ const EmployeeDetails = () => {
         <nav>
           <ul>
             <li>
-              <a href="/">Name</a>
+              <h4>{user.name}</h4>
             </li>
             <li>
               <a href="/" onClick={logoutHandler}>Logout</a>

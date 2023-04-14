@@ -7,20 +7,23 @@ import {
   logInWithEmailAndPassword,
   registerWithEmailAndPassword,
 } from "../../firebase/firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useEffect, useState } from "react";
 import firebase from "../../firebase/firebase";
 const Login = ({ setUser }) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const submitHandler = async () => {
-    const res = logInWithEmailAndPassword(email, password);
-    const token = await res.then( (data) => data._tokenResponse.idToken);
-    localStorage.setItem("token", token);
-
-    //navigate("/dashboard");
+    const signInMethod = await firebase
+      .auth()
+      .fetchSignInMethodsForEmail(email);
+    if (signInMethod.length > 0) {
+      const res = logInWithEmailAndPassword(email, password);
+      const token = await res.then((data) => data._tokenResponse.idToken); //TOFO: Session based login is pending
+      localStorage.setItem("token", token);
+    } else {
+      registerWithEmailAndPassword(email, password);
+    }
   };
 
   useEffect(() => {
@@ -33,8 +36,9 @@ const Login = ({ setUser }) => {
           setUser({
             uid: firebase.auth().currentUser.uid,
             email: firebase.auth().currentUser.email,
+            name: firebase.auth().currentUser.uid, // TODO: Name is coming as null Need to fix
           });
-
+        navigate("/dashboard");
         console.log("User Logged In");
       } else {
         console.log("User Signed Out");
