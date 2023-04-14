@@ -4,3 +4,15 @@ Day 1: 13-04-2023
 3 Added Routing using react-router-dom v6
 4 Added Firebase Authentication but having Bug.
 ----------
+Day 2: 14-04-2023
+Progress: 1. Fixed Login and Signup Issue with Firebase Authentication
+        2. Connected with Firebase Real time database to store the user's information
+        3. Fetching Employee details from the database and showing them on the dashboard table
+        4. Admin can now add more employees, read the employee, and delete the employee from the table and database.
+        5. And Logout Functionality also working as expected.
+
+       
+Optimization and Additional feature to add:
+          1. Edit the employee details,  showing prefilled into form, sand update the db.
+          2. Session-based login
+          3. Unit test cases.
