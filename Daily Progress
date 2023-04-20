@@ -16,3 +16,19 @@ Optimization and Additional feature to add:
           1. Edit the employee details,  showing prefilled into form, sand update the db.
           2. Session-based login
           3. Unit test cases.
+
+Day 3: 17-04-2023
+I have finished the theory part of OPPS concepts of Java and am Done with the system setup will all necessary software installed.
+
+
+Day 5: 18-04-2023
+I have finished the Exception Handling, Interface, and Collection Framework.
+
+Day 6: 19-04-2023
+I have finished the Stream API, and Lambda Function and also practiced Oops Problem from Hacker Rank.
+Will practice more on Collection and Problem-solving using Java.
+
+Day 7: 20-04-2023
+
+Worked on Maven and Creating MultiModule Maven Project. Created project both using maven cmd and using intellij IDE.
+Added Dependency of one, module to another to use inter module.
