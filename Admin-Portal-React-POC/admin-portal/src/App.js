@@ -16,7 +16,7 @@ function App() {
       <Route path="/" element={<Login setUser={setUser} />} />
       <Route path="/dashboard" element={<EmployeeDetails setUser={setUser} user={user}/>} />
       <Route path="/addnew" element={<AddNew />} />
-	  <Route path="/*" element={<NotFoundPage/>} />
+	    <Route path="/*" element={<NotFoundPage/>} />
     </Routes>
   );
 }
