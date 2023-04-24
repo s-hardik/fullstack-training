@@ -32,3 +32,15 @@ Day 7: 20-04-2023
 
 Worked on Maven and Creating MultiModule Maven Project. Created project both using maven cmd and using intellij IDE.
 Added Dependency of one, module to another to use inter module.
+
+Day 8: 24-04-2023
+
+Started with writing unit test cases using Junit 5
+Added Maven dependency of junit5 into IntelliJ IDE, and Running sample test cases.
+Added junit test life cycle methods of junit 5( beforeEach, BeforeAll, AfterEach, AfterAll)
+Testing exception using assertThrows annotation.
+Conditional Execution, Repeation execution, and also parameterized test cases execution from valuesource, method source and csvSource.
+Implemented all different types of annotation provided into the JUnit 5 framework.
+Followed the YouTube video below to learn.
+https://youtu.be/vZm0lHciFsQ
+https://youtu.be/flpmSXVTqBI
