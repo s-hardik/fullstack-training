@@ -44,3 +44,14 @@ Implemented all different types of annotation provided into the JUnit 5 framewor
 Followed the YouTube video below to learn.
 https://youtu.be/vZm0lHciFsQ
 https://youtu.be/flpmSXVTqBI
+
+Day 8/9, 26-04-2023
+
+Started with springBoot Tutorial and understanding spring core framework Concept.
+Understanding core spring concept IOC, Dependency Injection.
+Adding Depency using constructor-based, annotation-based, and Java Config File.
+Understanding AOP programming, to eliminate dependency into separate modules.
+Created Springboot Project from Spring initializer.
+Created SpringBoot Application RESTFUL API, with CRUD Functionality.
+Implemented using h2 in-memory database.
+Used spring data JPA, spring-boot, and h2 database.
