@@ -1,0 +1,30 @@
+spring:
+  message: Hello welcome to first springboot application!!
+---
+spring:
+  config:
+    activate:
+      on-profile: qa
+---
+spring:
+  config:
+    profiles: dev
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/demo
+---
+spring:
+  config:
+    profiles: qa
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/demo-qa
+---
+spring:
+  config:
+    profiles: prod
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/demo-prod
+  main:
+    allow-bean-definition-overriding: true

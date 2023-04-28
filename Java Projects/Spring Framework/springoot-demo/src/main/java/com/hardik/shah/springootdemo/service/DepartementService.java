@@ -1,6 +1,7 @@
 package com.hardik.shah.springootdemo.service;
 
 import com.hardik.shah.springootdemo.entity.Department;
+import com.hardik.shah.springootdemo.error.DepartmentNotFoundException;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ public interface DepartementService {
 
     public List<Department> getDepartments();
 
-   public Department getDepartmentsById(Long departmentId);
+   public Department getDepartmentsById(Long departmentId) throws DepartmentNotFoundException;
 
    public void deleteDepartmentById(Long departmentId);
 

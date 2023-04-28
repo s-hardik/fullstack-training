@@ -1,12 +1,14 @@
 package com.hardik.shah.springootdemo.service;
 
 import com.hardik.shah.springootdemo.entity.Department;
+import com.hardik.shah.springootdemo.error.DepartmentNotFoundException;
 import com.hardik.shah.springootdemo.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class DepartmentServiceImpl implements DepartementService{
@@ -14,7 +16,7 @@ public class DepartmentServiceImpl implements DepartementService{
     private DepartmentRepository departmentRepository;
     @Override
     public Department saveDepartment(Department department) {
-       return departmentRepository.save(department);
+       return departmentRepository.insert(department);
     }
 
     @Override
@@ -23,8 +25,12 @@ public class DepartmentServiceImpl implements DepartementService{
     }
 
     @Override
-    public Department getDepartmentsById(Long departmentId) {
-      return departmentRepository.findById(departmentId).get();
+    public Department getDepartmentsById(Long departmentId) throws DepartmentNotFoundException {
+     Optional<Department> department = departmentRepository.findById(departmentId);
+     if(!department.isPresent()){
+         throw new DepartmentNotFoundException("no department");
+     }
+     return department.get();
     }
 
     @Override

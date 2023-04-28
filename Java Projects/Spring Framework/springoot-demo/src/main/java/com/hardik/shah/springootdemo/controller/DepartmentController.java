@@ -1,6 +1,7 @@
 package com.hardik.shah.springootdemo.controller;
 
 import com.hardik.shah.springootdemo.entity.Department;
+import com.hardik.shah.springootdemo.error.DepartmentNotFoundException;
 import com.hardik.shah.springootdemo.service.DepartementService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -22,12 +23,12 @@ public class DepartmentController {
     return  departementService.saveDepartment(department);
     }
     @GetMapping("/departments")
-    public List<Department> getDepatements(){
+    public List<Department> getDepatements() throws DepartmentNotFoundException {
         logger.info("inside get department of departmentcontroller");
     return departementService.getDepartments();
     }
     @GetMapping("/departments/{id}")
-    public Department getDepatementsById(@PathVariable("id") Long departmentId){
+    public Department getDepatementsById(@PathVariable("id") Long departmentId) throws DepartmentNotFoundException {
         return departementService.getDepartmentsById(departmentId);
     }
     @DeleteMapping("/departments/{id}")
