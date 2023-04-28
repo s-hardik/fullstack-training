@@ -55,3 +55,14 @@ Created Springboot Project from Spring initializer.
 Created SpringBoot Application RESTFUL API, with CRUD Functionality.
 Implemented using h2 in-memory database.
 Used spring data JPA, spring-boot, and h2 database.
+
+
+Day 10 28-04-2023
+
+Modifying Springboot RestAPI to use MongoDB instead of h2 in the memory database.
+Connected spring boot application to store data into Mogodb server
+Added Mongo db config to application.properties files
+Added unit test cases
+migrated application.properties file to application.yml file.
+Added different profiles to run the application for different databases, like dev, QA, and prod.
+Added actuator as dependency and monitoring.
