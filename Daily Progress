@@ -66,3 +66,15 @@ Added unit test cases
 migrated application.properties file to application.yml file.
 Added different profiles to run the application for different databases, like dev, QA, and prod.
 Added actuator as dependency and monitoring.
+
+Day 11 02-05-2023
+
+
+Gone Through core mono Db concepts, reading the MongoDB document and book, MongoDB for professionals.
+CURD operation on MongoDB
+Getting DB Information, getting all connlections
+Updating single field of document, without overriding using $set.
+Retrieving documents using different conditions 
+Use of Different methods like count, sort, skip, limit
+Using Aggregation queries to search for a more complex collection
+Adding Index to Collections.
