@@ -78,3 +78,15 @@ Retrieving documents using different conditions
 Use of Different methods like count, sort, skip, limit
 Using Aggregation queries to search for a more complex collection
 Adding Index to Collections.
+
+
+Day 11/12  03-04-2023 to 04-04-2023
+Below is my status from the Java learning track for Day 10 and Day 11:
+
+Studying Spring Security and adding it to the Spring boot feature:
+Created Restful API to register the USER
+Integrated Mongo dB with spring boot to store the user information.
+Added Spring Security dependency into the project 
+Register the user with a token with an expiration time of 10 min.
+Feature to validate the registered user using URL and resend the token API.
+Both User and Validation tokens are stored in Mongodb as separate collections.
