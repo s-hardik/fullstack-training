@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigInteger;
@@ -20,6 +21,7 @@ import java.math.BigInteger;
 @Document
 public class Department {
     @Id
+    @Indexed(unique = true)
     private String departmentId;
     @NotBlank(message = "Department name is mandatory!!")
     private String departmentName;
