@@ -80,7 +80,7 @@ Using Aggregation queries to search for a more complex collection
 Adding Index to Collections.
 
 
-Day 11/12  03-04-2023 to 04-04-2023
+Day 11/12  03-04-2023 to 04-05-2023
 Below is my status from the Java learning track for Day 10 and Day 11:
 
 Studying Spring Security and adding it to the Spring boot feature:
@@ -90,3 +90,30 @@ Added Spring Security dependency into the project
 Register the user with a token with an expiration time of 10 min.
 Feature to validate the registered user using URL and resend the token API.
 Both User and Validation tokens are stored in Mongodb as separate collections.
+
+Day 13 08/05/2023
+
+Below is my status from the Java learning track for Day 13:
+
+Studying Spring Security and adding it to the Spring boot feature:
+
+Adding different methods to reset the password, and change the password using a link
+Adding Custom Login API, to authenticate using username and password from DB (Facing issue will connect with mentor tomorrow first half)
+Understanding of OAUTH2.0 protocol
+Flow of adding OAUTH2.0 into spring-boot application(Ongoing).
+
+Will connect with you on tomorrow for a better understanding of OAUTH2.0 and login functionality KT.
+
+https://github.com/s-hardik/fullstack-training/tree/master/Java%20Projects/Spring%20Framework/SpringSecurityDemo
+
+
+Apart from this gone through with few concepts of JavaScript brush-up and implemented the Leet-code for practice:
+
+JavaScript Practice Repository:
+Solving 1 leet code Easy problem
+ Understanding This keyword
+Applying call, apply and bind method of function
+Deep copy and Shallow Copy methods.
+
+https://github.com/s-hardik/JavaScript-Practice-DSA
+

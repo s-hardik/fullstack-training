@@ -15,7 +15,6 @@
     </properties>
 <modules>
     <module>SpringBootSecurity</module>
-    <module>Oauth-authorizationserver</module>
 </modules>
     <dependencies>
         <dependency>

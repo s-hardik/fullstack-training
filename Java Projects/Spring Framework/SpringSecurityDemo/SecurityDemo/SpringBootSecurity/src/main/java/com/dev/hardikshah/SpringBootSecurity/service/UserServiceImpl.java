@@ -5,18 +5,20 @@ import com.dev.hardikshah.SpringBootSecurity.entity.User;
 import com.dev.hardikshah.SpringBootSecurity.entity.VerificationToken;
 import com.dev.hardikshah.SpringBootSecurity.modal.UserModal;
 import com.dev.hardikshah.SpringBootSecurity.repository.PasswordResetTokenRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
 import com.dev.hardikshah.SpringBootSecurity.repository.UserRepository;
 import com.dev.hardikshah.SpringBootSecurity.repository.VerificationTokenRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.util.Calendar;
 import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -25,6 +27,7 @@ public class UserServiceImpl implements UserService{
     private PasswordEncoder passwordEncoder;
     @Autowired
     private PasswordResetTokenRepository passwordResetTokenRepository;
+
     @Override
     public User registerUser(UserModal userModal) {
         User user = new User();
@@ -47,13 +50,12 @@ public class UserServiceImpl implements UserService{
     @Override
     public String validateVerifictionToken(String token) {
         VerificationToken verificationToken = verificationTokenRepository.findByToken(token);
-        if(verificationToken==null)
-        {
+        if (verificationToken == null) {
             return "invalid";
         }
         User user = verificationToken.getUser();
         Calendar calendar = Calendar.getInstance();
-        if(verificationToken.getExpirationTime().getTime()-calendar.getTime().getTime()<=0){
+        if (verificationToken.getExpirationTime().getTime() - calendar.getTime().getTime() <= 0) {
             verificationTokenRepository.delete(verificationToken);
             return "expired";
         }
@@ -77,20 +79,19 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void createPasswordResetTokenForUser(User user, String token) {
-        PasswordResetToken passwordResetToken =new PasswordResetToken(user, token);
+        PasswordResetToken passwordResetToken = new PasswordResetToken(user, token);
         passwordResetTokenRepository.save(passwordResetToken);
     }
 
     @Override
     public String validatePasswordResetToken(String token) {
         PasswordResetToken passwordResetToken = passwordResetTokenRepository.findByToken(token);
-        if(passwordResetToken==null)
-        {
+        if (passwordResetToken == null) {
             return "invalid";
         }
         User user = passwordResetToken.getUser();
         Calendar calendar = Calendar.getInstance();
-        if(passwordResetToken.getExpirationTime().getTime()-calendar.getTime().getTime()<=0){
+        if (passwordResetToken.getExpirationTime().getTime() - calendar.getTime().getTime() <= 0) {
             passwordResetTokenRepository.delete(passwordResetToken);
             return "expired";
         }
@@ -111,5 +112,14 @@ public class UserServiceImpl implements UserService{
     @Override
     public boolean checkIfValidOldPassword(User user, String oldPassword) {
         return passwordEncoder.matches(oldPassword, user.getPassword());
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findUserByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("User not Found");
+        }
+        return user;
     }
 }

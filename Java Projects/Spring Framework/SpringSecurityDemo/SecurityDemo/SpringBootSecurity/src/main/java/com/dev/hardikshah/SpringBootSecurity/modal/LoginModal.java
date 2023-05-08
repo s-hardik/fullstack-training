@@ -5,15 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class UserModal {
-    private Long id;
+@AllArgsConstructor
+public class LoginModal {
     private String username;
-    private String firstName;
-    private String lastName;
-    private String email;
     private String password;
-    private String matchingPassword;
-    private boolean accountNonLocked;
 }
