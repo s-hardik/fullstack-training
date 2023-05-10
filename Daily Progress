@@ -126,15 +126,20 @@ Interacted with mentor to get understanding of spring login approached.
 
 Day 15 10/05/2023
 
-Today started with backend Application development of first POC assignment below is the progress:
+Today started with backend Application development of the first POC assignment below is the progress:
 
-	1. Created Spring-Boot project for Employee Management POC project.
-	2. Connected MongoDb to the application
-	3. Build CRUD API to update th employee details as admin.
-	4. Added the curd functionalty to Froentend React Applicaton.
-	5. Implementated all CRUD Functionality to be modify the DB and Work as Expected.
+      1. Created Spring-Boot project for Employee Management POC project.
+      2. Connected MongoDB to the application
+      3. Build CRUD API to update the employee details as admin.
+      4. Added the curd functionality to Frontend React Application.
+      5. Implemented all CRUD Functionality to modify the DB and Work as Expected.
 
-Below is the code to both frontend and backed.
+Below is the code for both frontend and backend.
 
+Frontend:
+https://github.com/s-hardik/fullstack-training/tree/master/Admin-Portal-React-POC/admin-portal
 
+Backend:
+https://github.com/s-hardik/fullstack-training/tree/master/Java%20Projects/Spring%20Framework/EmployeeManagementPortal
 
+Will add Spring Security to the application With Roles.
