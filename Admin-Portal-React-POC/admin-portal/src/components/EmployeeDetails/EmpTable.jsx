@@ -5,25 +5,30 @@ import "./EmpTable.css";
 import { getDatabase, ref, onValue, remove } from "firebase/database";
 import EditTwoToneIcon from "@mui/icons-material/EditTwoTone";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useNavigate } from "react-router-dom";
+import { getAllEmployee, removeData } from "../../service/EmployeeService";
+
+import { useNavigate, useLocation } from "react-router-dom";
 const EmpTable = () => {
   const navigate = useNavigate();
   const [dataRows, setDataRows] = useState([]);
+ 
+  //For deleting the data
   const deleteUser = React.useCallback(
     (id) => () => {
-      const db = getDatabase();
-      const empRef = ref(db, "/employee/" + id);
-      remove(empRef).then(() => {
-        console.log("removed");
-      });
+      removeData(id).then(res=>{
+        alert(res);
+        getEmpData();
+      }).catch(err=>{
+        console.log("Employee data deleted",err);
+      })
     },
     []
   );
   const editUser = React.useCallback(
     (id) => () => {
-      // const db = getDatabase();
-      // const empRef = ref(db, "/employee/" + id);
-      navigate('/addnew');
+      
+      navigate( `/update/${id}`);
+      
       //TODO: TO fill the form auto with existing employee details + Edit the same into database + navigate to dashboard once daved
     },
     []
@@ -120,25 +125,41 @@ const EmpTable = () => {
     ],
     [deleteUser, editUser]
   );
-
-  useEffect(() => {
-    const getEmpData = () => {
-      const db = getDatabase();
-      const empRef = ref(db, "/employee/");
-      onValue(empRef, (snapshot) => {
+  const getEmpData = () => {
+    // const db = getDatabase();
+    // const empRef = ref(db, "/employee/");
+    // onValue(empRef, (snapshot) => {
+    //   let rows = [];
+    //   const empData = snapshot.val();
+    //   for (let key in empData) {
+    //     let tempdata = {
+    //       ...empData[key],
+    //       id: key,
+    //     };
+    //     rows = [...rows, tempdata];
+    //   }
+    //   setDataRows(rows);
+    // });
+    getAllEmployee()
+      .then((res) => {
         let rows = [];
-        const empData = snapshot.val();
-        for (let key in empData) {
+        for (let key in res) {
           let tempdata = {
-            ...empData[key],
-            id: key,
+            ...res[key],
+            id: res[key].empId,
           };
           rows = [...rows, tempdata];
         }
         setDataRows(rows);
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    };
+  };
+
+  useEffect(() => {
     getEmpData();
+    
   }, []);
   console.log(dataRows);
   return (

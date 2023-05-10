@@ -117,3 +117,24 @@ Deep copy and Shallow Copy methods.
 
 https://github.com/s-hardik/JavaScript-Practice-DSA
 
+
+Day 14 09/05/2023
+
+Gone through with different approached to use spring security, 
+Implementation of Login using spring security.
+Interacted with mentor to get understanding of spring login approached.
+
+Day 15 10/05/2023
+
+Today started with backend Application development of first POC assignment below is the progress:
+
+	1. Created Spring-Boot project for Employee Management POC project.
+	2. Connected MongoDb to the application
+	3. Build CRUD API to update th employee details as admin.
+	4. Added the curd functionalty to Froentend React Applicaton.
+	5. Implementated all CRUD Functionality to be modify the DB and Work as Expected.
+
+Below is the code to both frontend and backed.
+
+
+

@@ -21,7 +21,16 @@ public class WebSecurityConfig {
     }
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests().anyRequest().permitAll();;
+        http
+                .csrf().disable()
+                .authorizeRequests().requestMatchers("/register**")
+                .permitAll() .anyRequest().authenticated()
+                .and()
+                .formLogin() .loginPage("/login")
+                .permitAll()
+                .and()
+                .logout() .invalidateHttpSession(true)
+                .clearAuthentication(true) .permitAll();
         return http.build();
     }
 }

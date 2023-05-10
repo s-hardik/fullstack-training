@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./AddNew.css";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import {saveEmployeeData, getEmployeeById} from "../../service/EmployeeService";
 const AddNew = () => {
   const navigate = useNavigate();
+  const pathName = useLocation().pathname;
   const [empData, setEmpdata] = useState({
     firstName: "",
     middleName: "",
@@ -20,73 +22,54 @@ const AddNew = () => {
   const postUserData = (event) => {
     name = event.target.name;
     value = event.target.value;
-
     setEmpdata({...empData, [name] : value});
   };
-  const addNewEmployee = async (event) => {
+  const saveEmployee = async (event) => {
     event.preventDefault();
-    const {firstName,
-      middleName,
-      lastName,
-      contactNumber,
-      emergencyNumber,
-      email,
-      panNo,
-      bloodGroup,
-      presentAddress,
-      permanentAddress} = empData;
-
-      if(firstName &&
-        middleName &&
-        lastName &&
-        contactNumber &&
-        emergencyNumber &&
-        email &&
-        panNo &&
-        bloodGroup &&
-        presentAddress &&
-        permanentAddress){
-          const res = await fetch(
-            "https://admin-portal-98df5-default-rtdb.firebaseio.com/employee.json",
-            {
-              method: "POST",
-              body: JSON.stringify(empData),
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          );
-          if(res){
-            setEmpdata({
-              firstName: "",
-              middleName: "",
-              lastName: "",
-              contactNumber: "",
-              emergencyNumber: "",
-              email: "",
-              panNo: "",
-              bloodGroup: "",
-              presentAddress: "",
-              permanentAddress: "",
-            })
-            alert("Data Submitted!!");
-          }
-          else{
-            alert("Data Submission Failed Please Try Again");
-          }
+      saveEmployeeData(empData, pathName).then(res=>{
+        if(res){
+          setEmpdata({
+            firstName: "",
+            middleName: "",
+            lastName: "",
+            contactNumber: "",
+            emergencyNumber: "",
+            email: "",
+            panNo: "",
+            bloodGroup: "",
+            presentAddress: "",
+            permanentAddress: "",
+          })
+          alert("Data Submitted!!");
+        }
+        else{
+          alert("Data Submission Failed Please Try Again");
+        }
         navigate("/dashboard");
-        }else{
-          alert("Please fill all the data!!")
-        } 
+      }).catch(err=>{
+        console.log("Error saving the Employee details", err);
+      })
   };
   const cancleForm = () => {
     navigate("/dashboard");
   };
+  useEffect(()=>{
+    if(pathName.includes("update")){
+    let id = pathName.split("/")[2].trim();
+    getEmployeeById(id).then(res=>{
+      setEmpdata(res);
+    }).catch(err=>{
+      console.log("Edit employee failed"+err);
+    })
+    }
+  },[])
   return (
     <>
       <div className="container">
         <div id="frm_contact_us">
-          <h2>Add New Employee</h2>
+          <h2>
+            {pathName.includes("update") ? "Update Employee Details" :"Add New Employee"}
+            </h2>
           <br />
           <div id="mail-status" className="success-msg"></div>
 
@@ -195,7 +178,7 @@ const AddNew = () => {
             required
           />
           <div className="add-btn">
-            <input type="submit" value="Submit" onClick={addNewEmployee} />
+            <input type="submit" value="Submit" onClick={saveEmployee} />
             <input type="submit" value="Cancle" onClick={cancleForm} />
           </div>
         </div>

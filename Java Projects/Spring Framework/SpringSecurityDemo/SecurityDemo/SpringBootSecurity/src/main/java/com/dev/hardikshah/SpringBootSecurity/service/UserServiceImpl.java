@@ -32,6 +32,7 @@ public class UserServiceImpl implements UserService {
     public User registerUser(UserModal userModal) {
         User user = new User();
         user.setId(userModal.getId());
+        user.setUsername(userModal.getUsername());
         user.setFirstName(userModal.getFirstName());
         user.setEmail(userModal.getEmail());
         user.setLastName(userModal.getLastName());
