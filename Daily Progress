@@ -143,3 +143,25 @@ Backend:
 https://github.com/s-hardik/fullstack-training/tree/master/Java%20Projects/Spring%20Framework/EmployeeManagementPortal
 
 Will add Spring Security to the application With Roles.
+
+
+Day 16/17 12-05-2023
+
+Below is my status from the Java learning track for Day 15 and Day 16:
+
+Today started with backend Application development of the first POC assignment below is the progress:
+
+Understanding Core concepts of Spring Security and Implementing into real projects.
+Added spring security into backed server
+New Authentication API are added to sign in and Register the user
+Once The user Sign in JWT token is shared. 
+Validating Further request using JWT token and Providing access to private URL
+Added same authentication login into frontend reactjs and Working as expected.
+Pending Task and Improvements:
+   1. Register and Logout Flow from frontend
+   2. Authorization 
+   3. Unit Test Cases
+   4. Adding Swagger
+   5. Documentation
+   6. Deplyment
+
