@@ -14,6 +14,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Login setUser={setUser} />} />
+      <Route path="/register" element={<Login setUser={setUser} />} />
       <Route path="/dashboard" element={<EmployeeDetails setUser={setUser} user={user}/>} />
       <Route path="/addnew" element={<AddNew />} />
       <Route path="/update/:id" element={<AddNew />} />

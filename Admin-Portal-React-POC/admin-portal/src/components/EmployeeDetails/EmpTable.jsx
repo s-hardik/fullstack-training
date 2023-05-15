@@ -125,7 +125,7 @@ const EmpTable = () => {
     ],
     [deleteUser, editUser]
   );
-  const getEmpData = () => {
+  const getEmpData = async () => {
     // const db = getDatabase();
     // const empRef = ref(db, "/employee/");
     // onValue(empRef, (snapshot) => {

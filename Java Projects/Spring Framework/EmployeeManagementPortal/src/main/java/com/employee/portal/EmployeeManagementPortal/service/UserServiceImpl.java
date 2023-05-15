@@ -28,11 +28,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User saveUser(UserModal userModal) {
+        List<String> roles = userModal.getRoles();
+        System.out.println("ROles****"+roles);
         User user = new User();
         String passwd= userModal.getPassword();
         String encodedPasswod = passwordEncoder.encode(passwd);
         user.setPassword(encodedPasswod);
         user.setUserName(userModal.getUserName());
+        user.setEmail(userModal.getEmail());
         user.setRoles(userModal.getRoles());
         userRepo.save(user);
         return user;
@@ -43,7 +46,7 @@ public class UserServiceImpl implements UserService {
         org.springframework.security.core.userdetails.User springUser=null;
 
         if(opt.isEmpty()) {
-            throw new UsernameNotFoundException("User with email: " + username +" not found");
+            throw new UsernameNotFoundException("User " + username +" not found");
         }
         User user =opt.get();
         List<String> roles = user.getRoles();

@@ -3,7 +3,7 @@ import "./EmployeeDetails.css";
 import logo from "../../assets/logo.png";
 import EmpTable from "./EmpTable";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../../firebase/firebase";
+import { logout } from "../../service/AuthService";
 
 const EmployeeDetails = ({user}) => {
   const logoutHandler = ()=>{

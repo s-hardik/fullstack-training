@@ -37,11 +37,12 @@ public class AuthController {
 
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 userModal.getUserName(), userModal.getPassword()));
-
+        System.out.println("authenticaton error"+ authentication);
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         final UserDetails userDetails = userDetailsService
                 .loadUserByUsername(userModal.getUserName());
+
         System.out.println("userDetails****"+userDetails);
         System.out.println("UserName****"+userDetails.getUsername());
         System.out.println("UserName getAuthorities****"+userDetails.getAuthorities());
@@ -55,5 +56,9 @@ public class AuthController {
     @PostMapping(value = "/register")
     public ResponseEntity<?> saveUser(@RequestBody UserModal userModal) throws Exception {
         return ResponseEntity.ok(userDetailsService.saveUser(userModal));
+    }
+    @GetMapping(value = "/signout")
+    public ResponseEntity<?> signout() throws Exception {
+        return ResponseEntity.ok("User SignOut Successfully");
     }
 }

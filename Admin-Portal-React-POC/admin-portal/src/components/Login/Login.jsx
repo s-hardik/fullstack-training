@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import "./Login.css";
 import logo from "../../assets/logo.png";
 import {
@@ -9,13 +9,16 @@ import {
 } from "../../firebase/firebase";
 import { useEffect, useState } from "react";
 import firebase from "../../firebase/firebase";
-import  {login}  from "../../service/AuthService";
+import  {login, register}  from "../../service/AuthService";
 
 const Login = ({ setUser }) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
+  const [error, serError]  = useState("");
+  const [role, serRole]  = useState([]);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const pathName = useLocation().pathname;
   const submitHandler = async () => {
 
     //Uncomment below code to use firebase Authentication
@@ -32,13 +35,33 @@ const Login = ({ setUser }) => {
     // }
 
     //Authentication using Spring Boot, Spring Security
-
-    const data = await login(userName, password);
-    if(data)
+  if(pathName.includes("register")){
+    const data = await register(email, userName, password, role);
+    console.log(data);
+    if(!data.error)
     {
+      navigate("/");
+      console.log("User Registered Successfully");
+    }
+  }
+  else{
+    const data = await login(userName, password);
+    console.log(data);
+    if(!data.error)
+    {
+      setUser({
+        uid: "",
+        email: data.email,
+        name: data.username, // TODO: Name is coming as null Need to fix
+      });
       navigate("/dashboard");
       console.log("User Logged In");
+      
     }
+    else{
+      serError(data.message);
+    }
+  }
   };
 
   // useEffect(() => {
@@ -72,8 +95,28 @@ const Login = ({ setUser }) => {
           <form id="login" className="active" action="">
             <div className="form-header">
               <img src={logo} alt="logo" />
+             
               <h4>Sign In</h4>
+              {error ? <p className="error-message">{error} Please Register First</p>:""}
             </div>
+            {pathName.includes("register")?<> <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="text"
+                id="email"
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+             <div className="form-group">
+             <label htmlFor="role">Roles</label>
+             <input
+               type="text"
+               id="role"
+               placeholder="Role"
+               onChange={(e) => serRole(e.target.value)}
+             />
+           </div></>: "" }
             <div className="form-group">
               <label htmlFor="username">Username</label>
               <input
@@ -94,9 +137,14 @@ const Login = ({ setUser }) => {
             </div>
 
             <div className="btn">
-              <input type="button" value="Sign In" onClick={submitHandler} />
+              <input type="button" value={pathName.includes("register")? "Register User" : "Sign In"} onClick={submitHandler} />
             </div>
           </form>
+          
+          {
+            pathName.includes("register")? "" :<><h4>New User?? </h4> <Link to="/register">Register Here</Link></>
+          }
+          
         </div>
       </div>
     </div>

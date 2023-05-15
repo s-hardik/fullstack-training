@@ -2,25 +2,32 @@ import axios from "axios";
 
 const API_URL = "http://localhost:8080/";
 
-const register = (username, password, role) => {
+export const register = (email, userName, password, roles) => {
+
   return axios.post(API_URL + "register", {
-    username,
+    email,
+    userName,
     password,
-    role
+    roles: roles.split(" ")
   });
 };
 
 export const login =  async (userName, password) => {
+  try{
     const response =  await axios.post(API_URL + "authenticate", {
-        userName,
-        password,
-      });
-      if (response.data.token) {
-        localStorage.setItem("token", JSON.stringify(response.data.token));
-        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
-
-      }
-      return response.data.token;
+      userName,
+      password,
+    });
+    if (response.data.token) {
+      localStorage.setItem("token", JSON.stringify(response.data.token));
+      axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+    }
+    return response.data;
+  }
+  catch(error){
+   return error.response.data;
+  }
+    
   };
 
 export const logout = () => {
