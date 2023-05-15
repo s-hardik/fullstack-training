@@ -97,7 +97,7 @@ const Login = ({ setUser }) => {
               <img src={logo} alt="logo" />
              
               <h4>Sign In</h4>
-              {error ? <p className="error-message">{error} Please Register First</p>:""}
+              {error ? <p className="error-message">{error} Please Check Username Password Again</p>:""}
             </div>
             {pathName.includes("register")?<> <div className="form-group">
               <label htmlFor="email">Email</label>

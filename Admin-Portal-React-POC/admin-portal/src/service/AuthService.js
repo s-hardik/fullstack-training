@@ -19,7 +19,7 @@ export const login =  async (userName, password) => {
       password,
     });
     if (response.data.token) {
-      localStorage.setItem("token", JSON.stringify(response.data.token));
+      localStorage.setItem("token", JSON.stringify(response.data.token).replace(/^"(.*)"$/, '$1'));
       axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
     }
     return response.data;
