@@ -165,3 +165,35 @@ Pending Task and Improvements:
    5. Documentation
    6. Deplyment
 
+
+
+Day 18 15/05/2023
+Below is my status from the Java learning track for Day 17:
+
+I have Finished the Employee Management POC project with Reactjs on frontend and Spring boot3 on backend. 
+
+All the core Features of the Application are added into the code and all the bugs are fixed.
+
+Today I have added below features and fixed below bug:
+      Features Added:
+      1. Registration Flow added, User can now able to register and user info stored into User collection of mongo DB
+      2. Added exception handling of spring security for failure cases
+      3. Added swagger 3 
+      4. Updated Read.me file with details.
+
+      Bug Fixes:
+      1. Fixed a bug on UI related to axios to send JWT token for subsequent request once user Logged in.
+
+      Pending Part:
+      1. Authorization on User and Admin roles basis
+      2. Unit Test Cases
+      3.  Server Deployment
+
+
+Day 19 15/05/2023
+Today I have added Unit test cases for Repository, service, and Controller layer for Employee Admin management POC project using Junit5 and Mockito.
+
+Please find the updated gitHub repo below:
+
+Backend:
+https://github.com/s-hardik/fullstack-training/tree/master/Java%20Projects/Spring%20Framework/EmployeeManagementPortal
