@@ -1,3 +1,28 @@
+#Admin Employment Management Project
+  Below are the Technologies used to build this project:
+    FroentEnd
+    1. Reactjs
+    2. Axios
+    Backend
+    1. Spring Boot 3
+    2. Spring Security 6
+    3. Mongo DB
+    4. Swagger API 3
+    
+# Functionality Included
+  User can Login and Register to the portal
+  User Details will be stored into mongo DB User Collection
+  User can See the Employee Details and Perform Edit, Delete, and Add operations
+  All the user Details will be stored at mongo db Employee_details Collection
+  
+# Features need to add
+  Authorization for Normal and admin user
+  Deployment of backend server
+  
+#Start the backend server
+  Goto /FullStack Training/Java Projects/Spring Framework/EmployeeManagementPortal 
+  Clone the Repo into local and Run the backend Application
+  
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
