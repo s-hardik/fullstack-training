@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "41f48d9d-a126-42e2-af65-cc3b09a557ff",
+		"name": "EmployeeManagement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "addEmployee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Emp_Id\": \"1234\",\r\n    \"firstName\": \"Hardik\",\r\n    \"middleName\": \"\",\r\n    \"lastName\":\"Shah\",\r\n    \"contactNumber\": \"8928688306\",\r\n    \"emergencyNumber\":\"9057233712\",\r\n    \"email\": \"shardik205@gmail.com\",\r\n    \"panNo\":\"IXUPS7112C\",\r\n    \"bloodGroup\":\"A+\",\r\n    \"presentAddress\":\"Partapur, Banswara, Rajasthan 327024\",\r\n    \"permanentAddress\":\"Partapur, Banswara, Rajasthan 327024\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/addEmployee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"addEmployee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllEmployee",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJoc2hhaCIsImV4cCI6MTY4Mzg5Njk3MSwiaWF0IjoxNjgzODc4OTcxfQ.6wlaCNGyHnFDafNLWbTAfxrSyZRAIdmp4674zi_PDkUmjDc4N_-EDSo6Ce23PhY-Bf-MyFeeR1n2ybw78UKV6Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getAllEmployee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getAllEmployee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getEmployeeById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getEmployeeById?empId=645b52a6b949af66d260b800",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getEmployeeById"
+					],
+					"query": [
+						{
+							"key": "empId",
+							"value": "645b52a6b949af66d260b800"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteEmployeeById",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/deleteEmployeeById?empId=645b52a6b949af66d260b800",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"deleteEmployeeById"
+					],
+					"query": [
+						{
+							"key": "empId",
+							"value": "645b52a6b949af66d260b800"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editEmployee",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Emp_Id\": \"1234\",\r\n    \"firstName\": \"Hshah\",\r\n    \"middleName\": \"\",\r\n    \"lastName\":\"dev\",\r\n    \"contactNumber\": \"+918928688306\",\r\n    \"emergencyNumber\":\"9057233712\",\r\n    \"email\": \"shardik205@gmail.com\",\r\n    \"panNo\":\"IXUPS7112C\",\r\n    \"bloodGroup\":\"A+\",\r\n    \"presentAddress\":\"Partapur, Banswara, Rajasthan 327024\",\r\n    \"permanentAddress\":\"Partapur, Banswara, Rajasthan 327024\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/editEmployee?empId=645b653a6e60f63e900324da",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"editEmployee"
+					],
+					"query": [
+						{
+							"key": "empId",
+							"value": "645b653a6e60f63e900324da"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\": \"hshah\",\r\n    \"password\": \"qwer1234\",\r\n    \"roles\": [\"USER\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\": \"hshah\",\r\n    \"password\": \"qwer1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

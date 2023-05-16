@@ -3,6 +3,7 @@ package com.employee.portal.EmployeeManagementPortal.service;
 import com.employee.portal.EmployeeManagementPortal.entity.Employee;
 import com.employee.portal.EmployeeManagementPortal.modal.EmployeeModal;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
