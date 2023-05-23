@@ -12,6 +12,7 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 public class Employee {
     @MongoId
     private String empId;
+    private String userName;
     private String firstName;
     private  String middleName;
     private  String lastName;

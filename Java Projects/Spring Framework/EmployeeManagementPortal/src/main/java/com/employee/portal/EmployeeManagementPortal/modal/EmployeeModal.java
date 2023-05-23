@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class EmployeeModal {
     private String empId;
+    private String userName;
     private String firstName;
     private  String middleName;
     private  String lastName;

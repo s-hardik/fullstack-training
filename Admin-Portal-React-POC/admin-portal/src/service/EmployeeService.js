@@ -39,6 +39,22 @@ export async function getEmployeeById(id){
     }
 }
 
+export async function getEmployeeByEmailId(email){
+  try{
+      const response = await axios.get('http://localhost:8080/getEmployeeByEmailId?emailId='+email, {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+            "Authorization" : `Bearer ${localStorage.getItem('token')}`
+          }
+        });
+     // console.log('response  ', response)
+      return response.data;
+  }catch(error) {
+      return [];
+  }
+}
+
 
 export async function saveEmployeeData(empData, pathName){
     const {firstName,

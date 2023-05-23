@@ -55,6 +55,7 @@ public class WebSecurityConfig {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeHttpRequests()
                 .requestMatchers("/signout","/register","/authenticate","swagger-ui/**","/v3/api-docs/**").permitAll()
+                .requestMatchers("/editEmployee", "/addEmployee","/getAllEmployee","/deleteEmployeeById" ).hasAuthority("ADMIN")
                 .anyRequest().authenticated();
         http.authenticationProvider(authenticationProvider());
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

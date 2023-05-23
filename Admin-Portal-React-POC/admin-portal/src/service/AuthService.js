@@ -20,6 +20,7 @@ export const login =  async (userName, password) => {
     });
     if (response.data.token) {
       localStorage.setItem("token", JSON.stringify(response.data.token).replace(/^"(.*)"$/, '$1'));
+      localStorage.setItem("user_roles", JSON.stringify(response.data.roles));
       axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
     }
     return response.data;
@@ -32,6 +33,8 @@ export const login =  async (userName, password) => {
 
 export const logout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("user_roles");
+   
     return axios.post(API_URL + "signout").then((response) => {
       return response.data;
     });

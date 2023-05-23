@@ -21,6 +21,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee addEmployee(EmployeeModal employeeModal) {
        Employee employee = new Employee();
        employee.setEmpId(employeeModal.getEmpId());
+       employee.setUserName(employeeModal.getUserName());
        employee.setFirstName(employeeModal.getFirstName());
        employee.setMiddleName(employeeModal.getMiddleName());
        employee.setLastName(employeeModal.getLastName());
@@ -62,6 +63,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
         existingEmployee.ifPresent(employee -> {
             employee.setFirstName(employeeModal.getFirstName());
+            employee.setUserName(employeeModal.getUserName());
             employee.setMiddleName(employeeModal.getMiddleName());
             employee.setLastName(employeeModal.getLastName());
             employee.setContactNumber(employeeModal.getContactNumber());
@@ -77,5 +79,10 @@ public class EmployeeServiceImpl implements EmployeeService {
                 "employee Successfully Updated",
                 HttpStatus.OK
         );
+    }
+
+    @Override
+    public Employee getEmployeeByEmailId(String emailId) {
+        return employeeRepository.getEmployeeByEmail(emailId);
     }
 }

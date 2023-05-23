@@ -55,10 +55,11 @@ public class UserServiceImpl implements UserService {
             ga.add(new SimpleGrantedAuthority(role));
         }
 
-        springUser = new org.springframework.security.core.userdetails.User(
-                username,
-                user.getPassword(),
-                ga);
-        return springUser;
+//        springUser = new org.springframework.security.core.userdetails.User(
+//                username,
+//                user.getPassword(),
+//                ga);
+//        return springUser;
+        return new MySpringUser(user);
     }
 }

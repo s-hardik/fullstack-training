@@ -19,4 +19,6 @@ public interface EmployeeService {
     public void deleteEmployeeById(String empId);
 
     public ResponseEntity<?> editEmployeeById(String empId, EmployeeModal employeeModal);
+
+    public Employee getEmployeeByEmailId(String emailId);
 }

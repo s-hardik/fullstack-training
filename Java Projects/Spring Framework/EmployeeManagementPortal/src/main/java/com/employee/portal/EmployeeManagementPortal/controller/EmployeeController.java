@@ -45,4 +45,8 @@ public class EmployeeController {
     public ResponseEntity<?> editEmployeeById(@RequestParam("empId") String empId, @RequestBody EmployeeModal employeeModal){
         return employeeService.editEmployeeById(empId, employeeModal);
     }
+    @GetMapping("/getEmployeeByEmailId")
+    public Optional<Employee> getEmployeeByEmailId(@RequestParam("emailId") String emailId) {
+        return Optional.ofNullable(employeeService.getEmployeeByEmailId(emailId));
+    }
 }

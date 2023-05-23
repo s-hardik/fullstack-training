@@ -54,7 +54,14 @@ const Login = ({ setUser }) => {
         email: data.email,
         name: data.username, // TODO: Name is coming as null Need to fix
       });
-      navigate("/dashboard");
+      
+      if(data.roles.includes("ADMIN")){
+        navigate("/dashboard");
+      }
+      else{
+        navigate("/user-dashboard");
+      }
+      
       console.log("User Logged In");
       
     }

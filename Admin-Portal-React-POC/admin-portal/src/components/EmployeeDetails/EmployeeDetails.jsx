@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./EmployeeDetails.css";
 import logo from "../../assets/logo.png";
 import EmpTable from "./EmpTable";
@@ -13,6 +13,8 @@ const EmployeeDetails = ({user}) => {
   const addEmploHandler = () => {
     navigate("/addnew");
   };
+  useEffect(()=>{
+  },[])
   return (
     <div>
       <header>
