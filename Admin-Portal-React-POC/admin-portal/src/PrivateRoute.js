@@ -11,7 +11,7 @@ const PrivateRoute = ({
   const  user_roles = localStorage.getItem("user_roles");
 
   const userHasRequiredRole = isAuthenticated && user_roles.includes(roles) ? true : false;
-    console.log(userHasRequiredRole);
+   
   if (!isAuthenticated) {
     return <Navigate to="/" state={{ from: location }} />;
   }

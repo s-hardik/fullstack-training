@@ -32,7 +32,6 @@ export async function getEmployeeById(id){
               "Authorization" : `Bearer ${localStorage.getItem('token')}`
             }
           });
-       // console.log('response  ', response)
         return response.data;
     }catch(error) {
         return [];
@@ -48,7 +47,6 @@ export async function getEmployeeByEmailId(email){
             "Authorization" : `Bearer ${localStorage.getItem('token')}`
           }
         });
-     // console.log('response  ', response)
       return response.data;
   }catch(error) {
       return [];
@@ -87,7 +85,6 @@ export async function saveEmployeeData(empData, pathName){
                           "Authorization" : `Bearer ${localStorage.getItem('token')}`
                         }
                       });
-                   // console.log('response  ', response)
                     return response.data;
             }
             else{

@@ -3,7 +3,7 @@ import "./Unauthorized.css";
 
 const Unauthorized = () => {
   return (
-   
+    <div className="Unauth-body">
       <div className="Unauth-div w3-display-middle">
         <h1 className=" Unauth-div-h1 w3-jumbo w3-animate-top w3-center">
           <code>Access Denied</code>
@@ -19,7 +19,7 @@ const Unauthorized = () => {
           <strong>Error Code</strong>: 403 forbidden
         </h6>
       </div>
-   
+      </div>
   );
 };
 

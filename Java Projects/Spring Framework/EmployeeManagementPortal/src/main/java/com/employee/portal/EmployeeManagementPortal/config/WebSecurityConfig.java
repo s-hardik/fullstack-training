@@ -56,6 +56,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests()
                 .requestMatchers("/signout","/register","/authenticate","swagger-ui/**","/v3/api-docs/**").permitAll()
                 .requestMatchers("/editEmployee", "/addEmployee","/getAllEmployee","/deleteEmployeeById" ).hasAuthority("ADMIN")
+                .requestMatchers("/getEmployeeByEmailId").hasAuthority("USER")
                 .anyRequest().authenticated();
         http.authenticationProvider(authenticationProvider());
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

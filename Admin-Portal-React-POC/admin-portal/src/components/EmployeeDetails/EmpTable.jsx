@@ -161,7 +161,7 @@ const EmpTable = () => {
     getEmpData();
     
   }, []);
-  console.log(dataRows);
+ 
   return (
     <Box
       sx={{

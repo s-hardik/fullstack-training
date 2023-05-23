@@ -37,7 +37,7 @@ const Login = ({ setUser }) => {
     //Authentication using Spring Boot, Spring Security
   if(pathName.includes("register")){
     const data = await register(email, userName, password, role);
-    console.log(data);
+    
     if(!data.error)
     {
       navigate("/");
@@ -46,13 +46,12 @@ const Login = ({ setUser }) => {
   }
   else{
     const data = await login(userName, password);
-    console.log(data);
     if(!data.error)
     {
       setUser({
         uid: "",
         email: data.email,
-        name: data.username, // TODO: Name is coming as null Need to fix
+        name: data.username, 
       });
       
       if(data.roles.includes("ADMIN")){
@@ -71,29 +70,6 @@ const Login = ({ setUser }) => {
   }
   };
 
-  // useEffect(() => {
-  //   let isMounted = true;
-
-  //   firebase.auth().onAuthStateChanged((user) => {
-  //     // setIsLoggedIn(!!user)
-  //     if (user && isMounted) {
-  //       if (user.uid)
-  //         setUser({
-  //           uid: firebase.auth().currentUser.uid,
-  //           email: firebase.auth().currentUser.email,
-  //           name: firebase.auth().currentUser.uid, // TODO: Name is coming as null Need to fix
-  //         });
-  //       navigate("/dashboard");
-  //       console.log("User Logged In");
-  //     } else {
-  //       console.log("User Signed Out");
-  //       setUser({});
-  //     }
-  //     console.log("auth change");
-  //     if (isMounted) return;
-  //   });
-  //   return () => (isMounted = false);
-  // }, [setUser]);
 
   return (
     <div className="formwarp">
