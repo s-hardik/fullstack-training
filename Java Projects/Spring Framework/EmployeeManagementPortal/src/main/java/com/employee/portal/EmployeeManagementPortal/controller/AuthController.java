@@ -45,11 +45,6 @@ public class AuthController {
 
         final MySpringUser userDetails = (MySpringUser) userDetailsService
                 .loadUserByUsername(userModal.getUserName());
-
-        System.out.println("userDetails****"+userDetails);
-        System.out.println("UserName****"+userDetails.getUsername());
-        System.out.println("UserEmail****"+userDetails.getEmail());
-        System.out.println("UserName getAuthorities****"+userDetails.getAuthorities());
         final String token = jwtTokenUtil.generateToken(userDetails);
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(item -> item.getAuthority())
